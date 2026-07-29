@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hossein Emami — Product Designer</title>
+<meta name="description" content="Hossein Emami — product designer with a software-engineering background." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f4f6f6;--surface:#e8eaec;--text:#171719;--muted:#6b6d72;--faint:#9a9ca1;
+    --line:rgba(0,0,0,0.10);--line-strong:rgba(0,0,0,0.18);--line-soft:rgba(0,0,0,0.07);--accent:#9a6a3a;--slash:#cdcfd2;
+    --max:800px;
+    --sans:'Switzer','Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  }
+  html.dark{
+    --bg:#141519;--surface:#1d1e23;--text:#e9e9eb;--muted:#9a9ca2;--faint:#6a6c72;
+    --line:rgba(255,255,255,0.12);--line-strong:rgba(255,255,255,0.22);--line-soft:rgba(255,255,255,0.07);--accent:#c79a6a;--slash:#3b3d43;
+  }
+  html.dark .topbar,html.dark .headpanel{background:rgba(20,21,25,0.86)}
+  html.dark .shot{background:#24252b;border-color:#24252b;box-shadow:0 0 60px 0 rgba(0,0,0,0.45)}
+  html.dark .shot .ph,html.dark .photo .ph{color:#54565c}
+  html.dark .photo{background:#24252b;border-color:#24252b;box-shadow:0 0 60px 0 rgba(0,0,0,0.45)}
+  html.dark .cs-pill{background:#2b2c33;border-color:rgba(255,255,255,0.10);color:var(--text)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background-color:var(--bg);
+    color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  }
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 40px}
+  .label{font-size:11.5px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--text)}
+  .ar{width:1.05em;height:1.05em;vertical-align:-1px;stroke:currentColor;stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+  /* ===== header ===== */
+  .site-head{position:sticky;top:0;z-index:30}
+  .topbar{border-bottom:1px solid var(--line-soft);background:rgba(244,245,246,0.86);backdrop-filter:saturate(140%) blur(10px)}
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:56px;gap:20px}
+  .brand{display:flex;align-items:center;flex:none}
+  .brand .nm{font-weight:600;font-size:14px;letter-spacing:-0.01em;color:var(--text);text-decoration:none}
+  .caret{display:inline-block;margin-left:2px;color:currentColor;opacity:.55;animation:blink 1.7s ease-in-out infinite}
+  @keyframes blink{0%,100%{opacity:.12}50%{opacity:.6}}
+  .head-center{font-size:12.5px;color:var(--muted);display:flex;align-items:center;gap:9px;white-space:nowrap;overflow:hidden}
+  .head-center .sep{color:var(--slash)}
+  .head-center .email{color:var(--text)}
+  .right{display:flex;align-items:center;gap:9px;flex:none}
+  .pill{height:32px;padding:0 13px;box-sizing:border-box;display:inline-flex;align-items:center;gap:7px;
+    border:1px solid var(--line);border-radius:8px;font-size:12px;font-weight:500;color:var(--muted);
+    background:transparent;cursor:pointer;text-decoration:none;line-height:1;white-space:nowrap;transition:.2s ease}
+  .pill:hover{border-color:var(--accent);color:var(--accent)}
+  .pill.copied{border-color:#5fbf7f;color:#5fbf7f}
+  .iconbtn{height:32px;width:32px;box-sizing:border-box;color:var(--muted);background:transparent;border:1px solid var(--line);
+    border-radius:8px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:.2s ease;padding:0}
+  .iconbtn:hover{border-color:var(--accent);color:var(--accent)}
+  .iconbtn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+
+  /* ===== pages / sections ===== */
+  .page{display:none}
+  .page.active{display:block}
+  .divide{border-top:none;position:relative}
+  .divide::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:calc(min(var(--max),100%) - 80px);border-top:1px solid var(--line-strong)}
+  section{padding:72px 0}
+  .grid2{display:grid;grid-template-columns:250px 1fr;gap:48px;align-items:start}
+
+  /* hero */
+  .hero{padding:119px 0 6px}
+  .hero .label{display:block;margin-bottom:26px}
+  .hero h1{font-size:clamp(40px,7vw,60px);font-weight:700;letter-spacing:-0.035em;line-height:1.0;margin-bottom:44px}
+  .hero .lede{font-size:clamp(17px,2.4vw,20px);font-weight:500;line-height:1.4;color:var(--text);letter-spacing:-0.01em;max-width:560px;margin-bottom:12px}
+  .hero .sub{color:var(--muted);font-size:14px;max-width:520px}
+  .metabar{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;margin-top:95px}
+  .metabar .m-left{display:flex;align-items:center;gap:14px;font-size:14.5px;color:var(--text)}
+  .metabar .m-right{display:flex;align-items:center;gap:14px;font-size:14.5px;color:var(--text);flex-wrap:wrap}
+  .metabar .sep{color:var(--slash);line-height:1;align-self:center;font-weight:400;font-style:normal}
+  .metabar a,.metabar .metacopy{color:var(--text);font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:5px;transition:.2s ease;background:none;border:none;padding:0;font-family:inherit;font-size:inherit;cursor:pointer;line-height:1.2}
+  .metabar a:hover,.metabar .metacopy:hover{color:var(--accent)}
+
+  /* about section (on work page) */
+  .col-l .photo{margin-top:52px}
+  .photo{width:100%;aspect-ratio:908/151;background:#fff;border:4px solid #fff;border-radius:15px;
+    box-shadow:0 0 60px 0 rgba(0,0,0,0.08);
+    display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .photo .ph{font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#c4c6ca}
+  .about-text p{color:var(--muted);font-size:14px;line-height:1.7;margin-bottom:15px;text-align:justify}
+  .about-text p:last-child{margin-bottom:0}
+  .about-text b{color:var(--text);font-weight:500}
+  .hl{color:var(--accent);font-weight:500}
+
+  /* work history */
+  .wh .label{display:block;margin-bottom:52px}
+  .job{padding:48px 0;border-top:1px solid var(--line-soft)}
+  .wh .label + .job,.subgroup + .job{border-top:none;padding-top:0}
+  .job:last-child{padding-bottom:0}
+  .job-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
+  .job-head .co{font-size:17px;font-weight:600;letter-spacing:-0.01em}
+  .morelink{display:inline-flex;align-items:center;gap:7px;margin-top:14px;font-size:12px;font-weight:500;color:var(--accent);text-decoration:none;transition:.2s ease;line-height:1}
+  .morelink:hover{opacity:.75}
+  .job-head .co .slash{color:var(--slash);font-weight:400;margin:0 .55em}
+  .job-head .co .role{color:var(--text);font-weight:400}
+  .job-head .date{font-size:12.5px;color:var(--text);white-space:nowrap}
+  .job-head .date .dash{margin:0 .3em}
+  .job .meta{margin-top:14px;font-size:12.5px;font-weight:400;color:var(--text);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .job .meta .dotsep{width:3px;height:3px;border-radius:50%;background:var(--faint)}
+  .job .desc{margin-top:14px;color:var(--muted);font-size:14px;line-height:1.6;max-width:660px;text-align:left}
+  .subgroup{margin:0 0 48px;font-size:11.5px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--text);
+    padding-top:48px;border-top:1px solid var(--line-soft)}
+  .subgroup + .job{margin-top:0}
+
+  /* image box (imageholder) */
+  .shot{position:relative;width:100%;margin-top:33px;background:#fff;border:4px solid #fff;border-radius:15px;
+    box-shadow:0 0 60px 0 rgba(0,0,0,0.08);display:flex;align-items:center;justify-content:center;overflow:hidden;
+    text-decoration:none;color:inherit}
+  .shot.wh{aspect-ratio:908/151}
+  .shot .ph{font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#c4c6ca}
+  a.shot{transition:transform .25s ease}
+  a.shot:hover{transform:translateY(-2px)}
+  .cs-pill{position:absolute;top:14px;left:14px;display:inline-flex;align-items:center;gap:7px;height:38px;padding:0 15px;
+    background:#fff;border:1px solid rgba(0,0,0,0.07);border-radius:11px;box-shadow:0 4px 14px rgba(0,0,0,0.06);
+    font-size:11.5px;font-weight:500;letter-spacing:0.13em;text-transform:uppercase;color:var(--text);text-decoration:none}
+
+  /* tools */
+
+  /* card figures: image on top, title+text inside card */
+  .cfig{margin:52px 0 8px;border-radius:20px;background:#fff;border:4px solid #fff;
+    box-shadow:0 0 60px 0 rgba(0,0,0,0.08);overflow:hidden}
+  .cfig .win{border-radius:14px;overflow:hidden;background:var(--surface)}
+  .cfig .win img{display:block;width:100%;height:auto}
+  html.dark .cfig{background:#232429;border-color:#232429;box-shadow:0 0 60px 0 rgba(0,0,0,0.45)}
+
+
+  /* short problem/approach labels */
+  .ctax{font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--faint);margin-bottom:12px}
+
+  /* CTA card: title + subtext + 3 links */
+  .cta-card{border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .cta-head{padding:26px 26px 22px}
+  .cta-title{font-size:17px;font-weight:600;letter-spacing:-0.01em;margin-bottom:8px}
+  .cta-sub{font-size:13.5px;color:var(--muted);margin:0;max-width:520px;text-align:left}
+  .cta-links{border-top:1px solid var(--line-soft)}
+  .cta-link{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 26px;text-decoration:none;color:inherit;border-top:1px solid var(--line-soft)}
+  .cta-link:first-child{border-top:none}
+  .cta-link:hover{background:var(--surface)}
+  .cl-t{display:block;font-size:14px;font-weight:600}
+  .cl-d{display:block;font-size:12.5px;color:var(--muted);margin-top:3px}
+  .cta-link svg{color:var(--accent);flex:none;width:1.3em;height:1.3em}
+  .cs-sec{padding:48px 0}
+  /* extra breathing room for Ravan-Darman's content (denser copy) */
+  #page-ravan .cs-sec{padding:68px 0}
+  #page-ravan .cta-card{margin-top:4px}
+  .cs-sec p{color:var(--muted);margin-bottom:15px;font-size:14.5px;text-align:justify;hyphens:auto}
+  blockquote{font-size:15px;color:var(--text);line-height:1.6;border-left:2px solid var(--accent);padding:2px 0 2px 18px;margin:16px 0;max-width:600px}
+  .more{padding:48px 0 10px}
+  .more .label{display:block;margin-bottom:24px}
+  .rail{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:16px;margin:0 -40px;padding-left:40px;padding-right:40px}
+  .rail::-webkit-scrollbar{height:6px}
+  .rail::-webkit-scrollbar-thumb{background:var(--line);border-radius:6px}
+  .card{flex:0 0 74%;max-width:320px;scroll-snap-align:start;text-decoration:none;color:inherit}
+  .card .thumb{width:100%;aspect-ratio:16/10;background:#fff;border:4px solid #fff;border-radius:15px;box-shadow:0 0 60px 0 rgba(0,0,0,0.08);display:flex;align-items:center;justify-content:center;margin-bottom:14px;transition:.25s ease}
+  html.dark .card .thumb{background:#24252b;border-color:#24252b;box-shadow:0 0 60px 0 rgba(0,0,0,0.45)}
+  .card:hover .thumb{transform:translateY(-3px)}
+  .card .thumb .ph{font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:#c4c6ca}
+  html.dark .card .thumb .ph{color:#54565c}
+  .card .ttl{font-size:16px;font-weight:600;margin-bottom:6px}
+  .card .tag{font-size:11px;color:var(--faint);margin-bottom:7px;letter-spacing:.04em}
+  .card .ex{color:var(--muted);font-size:13.5px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+
+  /* ===== about page ===== */
+  .pagehead{padding:56px 0 30px}
+  .pagehead .label{display:block;margin-bottom:18px}
+  .pagehead h1{font-size:clamp(34px,6vw,52px);font-weight:700;letter-spacing:-0.03em;line-height:1.03}
+  .abt-grid{display:flex;gap:40px;align-items:flex-start}
+  .abt-bio{flex:1}
+  .abt-grid .photo{flex:0 0 auto;max-width:210px;margin-top:0}
+  .abt-bio p{color:var(--muted);font-size:14.5px;line-height:1.7;margin-bottom:15px;text-align:justify;hyphens:auto}
+  .abt-bio p:last-child{margin-bottom:0}
+  .abt-bio b{color:var(--text);font-weight:500}
+  .block .label{display:block;margin-bottom:20px}
+  .block ul{list-style:none}
+  .block li{position:relative;padding-left:20px;color:var(--muted);margin-bottom:10px;max-width:620px;font-size:14.5px}
+  .block li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:1px;background:var(--accent);opacity:.7}
+  .block li b{color:var(--text);font-weight:500}
+
+  /* ===== footer ===== */
+  footer{padding:72px 0 60px}
+  .foot-top{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap;margin-bottom:36px}
+  .foot-top .big{font-size:18px;font-weight:400;color:var(--text);letter-spacing:-0.01em;line-height:1.5}
+  .foot-top .big span{color:var(--muted);display:block;font-size:14px;font-weight:400;margin-top:8px}
+  .foot-row{display:flex;gap:9px;flex-wrap:wrap;align-items:center;padding-top:22px;border-top:1px solid var(--line-soft)}
+  .foot-copy{margin-top:24px}
+  .foot-copy .c{color:var(--faint);font-size:12.5px}
+
+  .js [data-reveal]{opacity:0;filter:blur(9px);transform:translateY(8px)}
+  .js [data-reveal].in{opacity:1;filter:blur(0);transform:none;transition:opacity .7s ease,filter .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+  @media (prefers-reduced-motion:reduce){.js [data-reveal]{opacity:1!important;filter:none!important;transform:none!important;transition:none!important}html{scroll-behavior:auto}.caret{animation:none}}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+
+  @media (max-width:720px){
+    .wrap{padding:0 22px}
+    .divide::before{width:calc(min(var(--max),100%) - 44px)}
+    .head-center{display:none}
+    .grid2{grid-template-columns:1fr;gap:24px}
+    .about-sec .grid2{gap:72px}
+    .metabar{flex-direction:column;align-items:flex-start;gap:21px}
+    .metabar .m-right{align-items:flex-start}
+    .job-head{flex-direction:column;gap:4px}
+    .hero{padding:100px 0 24px}
+    .abt-grid{flex-direction:column}
+    .rail{margin:0 -22px;padding-left:22px;padding-right:22px}
+    .card{flex-basis:82%}
+  }
+
+  /* === Ravan-Darman full case study additions === */
+
+  /* standardize ALL emphasis text to the About-the-Project convention */
+  #page-ravan b{font-weight:500;color:var(--text)}
+
+  /* bullet-tag: reused for Stage refs — bullets sized up slightly */
+  .b-tag{font-size:12.5px;font-weight:500;color:var(--faint)}
+  .label.with-tag{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .stage-tags{margin-top:8px;display:flex;flex-direction:column;gap:3px}
+  .stage-tags .b-tag{display:block}
+
+  /* small label ABOVE a nested blockquote (Evidence / Action Plan / Goal) */
+  .bq-wrap{margin-top:22px}
+  .bq-wrap .bq-k{font-size:12.5px;color:var(--faint);font-weight:500;margin-bottom:6px;display:block;padding-left:18px}
+  .bq-wrap blockquote{margin:0}
+
+  /* Tools line under each Process stage */
+  .tools-line{font-size:12.5px;color:var(--muted);margin-top:10px}
+  .tools-line b{color:var(--muted);font-weight:500}
+
+  /* validation stat row */
+  .val-stats{display:flex;gap:32px;margin-top:14px;flex-wrap:wrap}
+  .val-stat{display:flex;align-items:center;gap:9px}
+  .val-stat svg{width:18px;height:18px;color:var(--accent);flex:none}
+  .val-stat .vs-num{font-size:20px;font-weight:600;color:var(--text);letter-spacing:-0.01em}
+  .val-stat .vs-lbl{font-size:12px;color:var(--muted);margin-top:1px}
+
+  /* Design System box: reuse cta-card visual language, no links */
+  .ds-box{margin-top:25px}
+  .ds-box .cta-head{padding:24px}
+  .ds-grid2x2{display:grid;grid-template-columns:1fr 1fr;gap:20px 28px}
+  .ds-item-k{font-size:11px;color:var(--faint);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.06em}
+  .ds-item-v{font-size:13.5px;color:var(--text)}
+  .ds-swatch-row{display:flex;gap:8px;margin-top:2px}
+  .ds-swatch{width:22px;height:22px;border-radius:6px;border:1px solid var(--line-soft)}
+  .ds-swatch-more{font-size:11px;color:var(--faint);align-self:center;margin-left:2px}
+  @media(max-width:640px){.ds-grid2x2{grid-template-columns:1fr}}
+
+  /* prototype screens: raw, no container/shadow/background — breaks out of --max, centered on
+     the viewport (not just the content column); only these images are allowed to do this */
+  .proto-break{width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;margin-top:50px;margin-bottom:50px}
+  .proto-break:first-of-type{margin-top:46px}
+  .proto-shot{display:block;width:100%;max-width:1200px;height:auto;margin:0 auto}
+  @media(max-width:640px){
+    .proto-break{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-left:22px;scrollbar-width:none;-ms-overflow-style:none}
+    .proto-break::-webkit-scrollbar{display:none}
+    .proto-shot{width:700px;max-width:none;margin:0}
+  }
+
+  /* Information Architecture image — unaffected by the prototype breakout above, unchanged */
+  .ia-shot{width:100%;height:auto;display:block;margin:66px 0}
+
+  /* mini CTA (Behance / Figma prototype) — reuses .cta-card's border/radius + .cta-link's row layout */
+  .mini-cta{display:flex;justify-content:space-between;align-items:center;gap:16px;text-decoration:none;color:inherit;padding:20px 24px;transition:.2s ease}
+  .mini-cta:hover{background:var(--surface)}
+  .mini-cta-title{font-size:15px;font-weight:600;letter-spacing:-0.01em;margin-bottom:4px}
+  .mini-cta-desc{font-size:13px;color:var(--muted);margin:0}
+  .mini-cta svg{color:var(--accent);flex:none;width:1.3em;height:1.3em}
+  .about-cta{margin-top:28px}
+  .proto-cta{margin-top:25px}
+
+  /* symmetric divider spacing for "intro paragraph -> job": the job's own border-top
+     already gives 48px of space AFTER the line (its top padding); this gives the same
+     48px of space BEFORE the line, matching the spacing already used between two
+     consecutive .job items elsewhere on the page */
+  .section-intro{margin-bottom:48px}
+
+  /* justified paragraph style — same treatment as About the Project — used for every section
+     EXCEPT About the Project / My Role / Process / Problem Framing (left untouched on request) */
+  .desc-j{margin-top:14px;color:var(--muted);font-size:14px;line-height:1.7;max-width:660px;text-align:justify;hyphens:auto}
+  .desc-j b{font-weight:500;color:var(--text)}
+
+  /* page-specific token overrides (this page only, per explicit request) */
+  #page-ravan{--accent:#000000}
+  html.dark #page-ravan{--accent:#ffffff}
+  #page-ravan .hero{padding:119px 0 10px}
+
+  /* Design System: documentation for the Colors item */
+  .ds-color-doc{font-size:11px;color:var(--muted);margin-top:8px;line-height:1.5}
+
+  /* NOTE box (same visual language as the Design System box) */
+  .note-box{margin-top:25px}
+  .note-box .cta-head{padding:24px}
+  .note-k{font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--faint);margin-bottom:12px}
+  .note-box p{font-size:13.5px;color:var(--muted);line-height:1.6;margin-bottom:10px}
+  .note-box p:last-child{margin-bottom:0}
+</style>
+
+<link rel="canonical" href="https://hossein-em.github.io/">
+<meta property="og:title" content="Hossein Emami Portfolio">
+<meta property="og:description" content="Portfolio">
+<meta property="og:url" content="https://hossein-em.github.io/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image"></head>
+<body>
+<script>
+  document.documentElement.classList.add('js');
+  (function(){try{var s=localStorage.getItem('theme');if(s==='dark'||(s===null&&window.matchMedia&&matchMedia('(prefers-color-scheme:dark)').matches))document.documentElement.classList.add('dark');}catch(e){}})();
+</script>
+
+<!-- ===== HEADER ===== -->
+<div class="site-head">
+  <div class="topbar">
+    <div class="wrap">
+      <div class="brand"><a class="nm" href="#work">Hossein Emami<span class="caret">_</span></a></div>
+      <div class="head-center">Open to full-time &amp; freelance work <span class="sep">/</span> <span class="email">Hosseinem77@gmail.com</span></div>
+      <div class="right">
+        <a class="pill" href="Hossein_Emami_Resume.pdf" target="_blank" rel="noopener"><span class="lbl">Resume</span></a>
+        <button class="iconbtn" id="themeToggle" aria-label="Toggle dark mode"></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+<!-- ============ PAGE: WORK ============ -->
+<div class="page" id="page-work">
+  <header class="hero">
+    <div class="wrap">
+      <span class="label" style="color:var(--faint)" data-reveal>Product Designer</span>
+      <h1 data-reveal>Hossein Emami</h1>
+      <p class="lede" data-reveal>Connect user needs and business goals to design decisions that deliver real value.</p>
+      <p class="sub" data-reveal>Open to full-time, freelance, and remote.</p>
+      <div class="metabar" data-reveal>
+        <div class="m-left"><span>Tehran, Iran</span><span class="sep">/</span><span>English, Persian</span></div>
+        <div class="m-right">
+          <a href="https://linkedin.com/in/hosseinem" target="_blank" rel="noopener">LinkedIn</a>
+          <span class="sep">/</span>
+          <button class="metacopy" data-copy="Hosseinem77@gmail.com"><span class="lbl">Email Address</span></button>
+          <span class="sep">/</span>
+          <button class="metacopy" data-copy="+98 936 463 7537"><span class="lbl">Phone Number</span></button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="about-sec divide">
+    <div class="wrap grid2">
+      <div class="col-l">
+        <span class="label" data-reveal>About</span>
+      </div>
+      <div class="col-r about-text">
+        <p data-reveal>I'm a <b>product designer</b> with a background in computer software engineering. I work across the whole process — research and synthesis through to validated, shipped decisions — and make sure they hold up rather than just get assumed.</p>
+        <p data-reveal>I've worked across EdTech and mental-health products, comfortable owning the full design process from discovery and strategy through to shipped product, and working closely with engineers, PMs, and founders to keep decisions solid in production.</p>
+        <p data-reveal>I'm available for full-time and freelance work, and open to fully remote roles.</p>
+        <a class="morelink" href="#about" data-reveal>More About Me <svg class="ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16L16 8"/><path d="M9.5 8H16V14.5"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="wh divide">
+    <div class="wrap">
+      <span class="label" data-reveal>Work History</span>
+
+      <div class="job" data-reveal>
+        <div class="job-head"><div class="co">Ravan-Darman <span class="slash">/</span> <span class="role">Product Designer</span></div><div class="date">Dec 2025 <span class="dash">–</span> Feb 2026</div></div>
+        <div class="meta">Collaborative project<span class="dotsep"></span>Mental Health Platform</div>
+        <p class="desc">Worked across the strategy and design of group-based mental health experiences within a real-world therapy platform. A collaborative project moving from research and discovery through ideation, design execution, and validation — shaping two group-based concepts, Events and Community, validated through usability testing.</p>
+        <a class="morelink" href="#ravan">View Case Study <svg class="ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16L16 8"/><path d="M9.5 8H16V14.5"/></svg></a>
+      </div>
+
+      <div class="job" data-reveal>
+        <div class="job-head"><div class="co">Tiararah <span class="slash">/</span> <span class="role">Product Designer</span></div><div class="date">Jul 2025 <span class="dash">–</span> Present</div></div>
+        <div class="meta">Children's EdTech Startup</div>
+        <p class="desc">Sole designer on an early-stage children's education platform (ages 3–16), owning the end-to-end design process from research to handoff. I consolidated low-impact pages into high-visibility surfaces and introduced habit-building patterns for recurring use. The product is preparing to launch.</p>
+        <a class="morelink" href="#case">View Case Study <svg class="ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16L16 8"/><path d="M9.5 8H16V14.5"/></svg></a>
+      </div>
+
+      <p class="subgroup" data-reveal>Freelance</p>
+
+      <div class="job" data-reveal>
+        <div class="job-head"><div class="co">Music Platform <span class="slash">/</span> <span class="role">Sole Designer</span></div></div>
+        <div class="meta">EdTech &amp; E-commerce</div>
+        <p class="desc">Sole designer for a music education and instrument-sales platform, owning the end-to-end design.</p>
+        <a class="morelink" href="https://nadermodir.com" target="_blank" rel="noopener">View Live <svg class="ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16L16 8"/><path d="M9.5 8H16V14.5"/></svg></a>
+      </div>
+
+      <div class="job" data-reveal>
+        <div class="job-head"><div class="co">Additional Projects</div></div>
+        <div class="meta">Web &amp; Branding</div>
+        <p class="desc">Delivered web and branding projects for small businesses, including landing page customization, interface improvements, and visual identity work (banners, logos, icons).</p>
+      </div>
+
+      <p class="subgroup" data-reveal>Earlier Experience</p>
+
+      <div class="job" data-reveal>
+        <div class="job-head"><div class="co">Ministry of Science <span class="slash">/</span> <span class="role">IT Operations Specialist</span></div><div class="date">Jul 2023 <span class="dash">–</span> Jul 2025</div></div>
+        <div class="meta">Research and Technology</div>
+        <p class="desc">Worked closely with users and the technical team on a large-scale academic recruitment platform, developing a hands-on understanding of real user problems and system constraints. Deployed and configured Zabbix monitoring on Linux servers, setting up infrastructure tracking and alerting.</p>
+      </div>
+    </div>
+  </section>
+
+    <section class="wh divide">
+    <div class="wrap">
+      <span class="label" data-reveal>Skill</span>
+
+      <div class="job" data-reveal>
+        <div class="job-head"><div class="co">Research &amp; Strategy</div></div>
+        <p class="desc">UX Research, User Interviews, Usability Testing, Statistical Analysis, Research Synthesis, Benchmarking, Product Strategy, Prioritization</p>
+      </div>
+
+      <div class="job" data-reveal>
+        <div class="job-head"><div class="co">Design &amp; Craft</div></div>
+        <p class="desc">Interaction Design, Information Architecture, User Flows, Wireframing, Prototyping, Visual / UI Design, Design Systems</p>
+      </div>
+
+      <div class="job" data-reveal>
+        <div class="job-head"><div class="co">Technical</div></div>
+        <p class="desc">Software-engineering foundation, Technical Feasibility, Developer Handoff, Basic Frontend Understanding</p>
+      </div>
+
+      <div class="job" data-reveal>
+        <div class="job-head"><div class="co">Tools</div></div>
+        <p class="desc">Figma, FigJam, Framer, Maze, SPSS, Adobe Suite, AI Prompting (LLMs)</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ PAGE: CASE ============ -->
+<div class="page" id="page-case">
+  <header class="hero">
+    <div class="wrap">
+      <span class="label" data-reveal>Case Study</span>
+      <h1 data-reveal>Tiararah</h1>
+      <p class="lede" data-reveal>Rebuilding a children's product around daily routines and recurring engagement.</p>
+      <p class="sub" data-reveal>Children's EdTech</p>
+      <div class="metabar" data-reveal>
+        <div class="m-left"><span>Jul 2025</span><span class="sep">–</span><span>Present</span></div>
+        <div class="m-right">
+          <span>Figma</span>
+          <span class="sep">/</span>
+          <span>FigJam</span>
+          <span class="sep">/</span>
+          <span>Photoshop</span>
+          <span class="sep">/</span>
+          <span>Gemini</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="about-sec divide">
+    <div class="wrap grid2">
+      <div class="col-l">
+        <span class="label" data-reveal>About the Project</span>
+      </div>
+      <div class="col-r about-text">
+        <p data-reveal>Tiararah is an early-stage EdTech product designed for children, teenagers, and the families around them. The experience begins with a public website introducing the platform and the team, then moves into a personalized, subscription-based dashboard.</p>
+        <p data-reveal>The dashboard brings the platform's core concepts together in one place: a recurring engagement program, nightly bedtime stories, monthly book and game picks, curated recreational experiences, and tools for personal reflection — with presentation adapted to each age group.</p>
+        <p data-reveal>The product is pre-launch — selected parts of the work are shown here in limited form. Additional workflows, system architecture, and internal explorations are not publicly included.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wh divide">
+    <div class="wrap">
+      <span class="label" data-reveal>My Role</span>
+
+      <div class="job" data-reveal>
+        <div class="job-head"><div class="co">Product Designer</div></div>
+        <p class="desc">Owned the product's design end to end — strategy, information architecture, interaction design, UI, and prototyping — as the startup's sole designer, working across web and mobile in close collaboration with the founder and the engineering team.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wh divide">
+    <div class="wrap">
+      <span class="label" data-reveal>Process</span>
+
+      <div class="job" data-reveal>
+        <div class="job-head"><div class="co">Reframing the problem</div></div>
+        <p class="desc">When I joined, a complete design for the product already existed — but the team no longer felt aligned with its direction and didn't want to build on it.</p>
+        <p class="desc">My mandate became defining a clearer foundation for the experience — from structure and interaction patterns to the overall visual direction — and bringing the team along with every decision, moving fast within the ambiguity of an early-stage product.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wh divide">
+    <div class="wrap">
+      <span class="label" data-reveal>Key Decisions</span>
+
+      <div class="job" data-reveal>
+        <div class="job-head"><div class="co">Content where users already are</div></div>
+        <p class="desc-j">Features planned as standalone pages risked being visited once and forgotten. Gratitude and goal-setting became part of the journal; the recurring engagement program was surfaced directly on the dashboard, its audio sessions one tap away.</p>
+        <div class="bq-wrap" data-reveal><span class="bq-k">Action Plan</span><blockquote>Consolidated standalone pages into the dashboard &amp; journal.</blockquote></div>
+      </div>
+
+      <div class="job" data-reveal>
+        <div class="job-head"><div class="co">Designing for recurring engagement</div></div>
+        <p class="desc-j">Lightweight patterns reinforce continuity — daily streaks, reminders, and calendar-based daily tasks. Bedtime stories unlock in a fixed evening window, so a live countdown on the story card turns the constraint into nightly rhythm.</p>
+        <div class="bq-wrap" data-reveal><span class="bq-k">Action Plan</span><blockquote>Introduced streaks, reminders, daily tasks &amp; the story countdown.</blockquote></div>
+      </div>
+
+      <div class="job" data-reveal>
+        <div class="job-head"><div class="co">Reflection as part of the experience</div></div>
+        <p class="desc-j">The journal was designed as a low-friction space for capturing thoughts and moments across formats — text, voice, and imagery — personal and expressive rather than a productivity feature.</p>
+        <div class="bq-wrap" data-reveal><span class="bq-k">Action Plan</span><blockquote>Designed the journal around expression, not tasks.</blockquote></div>
+      </div>
+
+      <div class="job" data-reveal>
+        <div class="job-head"><div class="co">One product, two moods</div></div>
+        <p class="desc-j">Serving ages 3–16 takes more than responsive layouts. Two complete visual themes run across web and mobile — one calmer and more atmospheric, the other brighter and more playful — without fragmenting the system.</p>
+        <div class="bq-wrap" data-reveal><span class="bq-k">Action Plan</span><blockquote>Designed &amp; systematized both themes end to end.</blockquote></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wh divide">
+    <div class="wrap">
+      <span class="label" data-reveal>Design Execution</span>
+
+      <div class="job" data-reveal>
+        <div class="job-head"><div class="co">Landing page</div></div>
+        <p class="desc-j">The public entry to the platform — setting tone and character before sign-up.</p>
+        <figure class="cfig"><div class="win"><img src="images/image-001.jpg" alt="Landing page design"></div></figure>
+      </div>
+
+      <div class="job" data-reveal>
+        <div class="job-head"><div class="co">Dashboard — first theme</div></div>
+        <p class="desc-j">The calmer, more atmospheric direction. Ongoing activities, stories, and monthly picks live together on one surface.</p>
+        <figure class="cfig"><div class="win"><img src="images/image-002.jpg" alt="Web dashboard — first theme"></div></figure>
+      </div>
+
+      <div class="job" data-reveal>
+        <div class="job-head"><div class="co">Dashboard — second theme</div></div>
+        <p class="desc-j">The brighter, more playful direction of the same system.</p>
+        <figure class="cfig"><div class="win"><img src="images/image-003.jpg" alt="Web dashboard — second theme"></div></figure>
+      </div>
+
+      <div class="job" data-reveal>
+        <div class="job-head"><div class="co">The journal</div></div>
+        <p class="desc-j">Daily reflection in text, voice, and imagery — adapting to different ages and communication styles.</p>
+        <figure class="cfig"><div class="win"><img src="images/image-004.jpg" alt="Personal journal"></div></figure>
+      </div>
+
+      <div class="job" data-reveal>
+        <div class="job-head"><div class="co">Reading</div></div>
+        <p class="desc-j">The monthly book, read inside the platform.</p>
+        <figure class="cfig"><div class="win"><img src="images/image-005.jpg" alt="Reading experience"></div></figure>
+      </div>
+
+      <div class="job" data-reveal>
+        <div class="job-head"><div class="co">Night stories</div></div>
+        <p class="desc-j">Available in a fixed evening window — counted down on the dashboard as part of the nightly rhythm.</p>
+        <figure class="cfig"><div class="win"><img src="images/image-006.jpg" alt="Night stories"></div></figure>
+      </div>
+
+      <div class="job" data-reveal>
+        <div class="job-head"><div class="co">Beyond these screens</div></div>
+        <p class="desc-j">The screens above are a selected view. Across web and mobile, the full product also included the landing page, log-in and sign-up, subscription plans, the dashboard, book and game introductions, night stories, the journal, profile, and a support / ticketing flow — along with notifications and in-app pop-ups such as the success box and goal-setting prompts.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wh divide">
+    <div class="wrap">
+      <span class="label" data-reveal>Outcome</span>
+
+      <div class="job" data-reveal>
+        <div class="job-head"><div class="co">Outcome</div></div>
+        <p class="desc-j">The platform is preparing to launch, so outcome metrics aren't available yet. What the redesign delivered:</p>
+        <ul>
+          <li data-reveal>A direction the <b>whole team stands behind</b> — full stakeholder alignment on the new design, in contrast to the version it replaced.</li>
+          <li data-reveal>Core content restructured into <b>daily surfaces</b>, built to be encountered rather than searched for.</li>
+          <li data-reveal>A <b>brand character</b> woven through the screens, adopted into the live product.</li>
+        </ul>
+      </div>
+
+      <div class="job" data-reveal>
+        <div class="job-head"><div class="co">Brand character</div></div>
+        <figure class="cfig"><div class="win"><img src="images/image-007.png" alt="Tiararah brand character" style="max-width:190px;margin:auto"></div></figure>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ PAGE: RAVAN ============ -->
+<div class="page" id="page-ravan">
+
+  <header class="hero">
+    <div class="wrap">
+      <span class="label" data-reveal>Case Study</span>
+      <h1 data-reveal>Ravan-Darman</h1>
+      <p class="lede" data-reveal>Designing group-based mental health experiences — Events and Community — within a real-world therapy platform.</p>
+      <p class="sub" data-reveal>Mental Health Platform</p>
+      <div class="metabar" data-reveal>
+        <div class="m-left"><span>Dec 2025</span><span class="sep">–</span><span>Feb 2026</span></div>
+        <div class="m-right">
+          <span>Figma</span>
+          <span class="sep">/</span>
+          <span>FigJam</span>
+          <span class="sep">/</span>
+          <span>Maze</span>
+          <span class="sep">/</span>
+          <span>SPSS</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="about-sec divide">
+    <div class="wrap grid2">
+      <div class="col-l">
+        <span class="label" data-reveal>About the Project</span>
+      </div>
+      <div class="col-r about-text">
+        <p data-reveal>This project explored opportunities to expand Ravan-Darman's service ecosystem beyond one-to-one therapy sessions. Working across <b>research, strategy, UX, and UI design</b>, the goal was to evaluate, design, and validate group-based experiences that could create value for users, specialists, and the business.</p>
+
+        <a class="cta-card mini-cta about-cta" href="https://www.behance.net/gallery/252454335/Mental-Health-Platform-Product-Design" target="_blank" rel="noopener" data-reveal>
+          <div>
+            <div class="mini-cta-title">View on Behance</div>
+            <p class="mini-cta-desc">Read the complete case study write-up.</p>
+          </div>
+          <svg class="ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16L16 8"/><path d="M9.5 8H16V14.5"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="wh divide">
+    <div class="wrap">
+      <span class="label" data-reveal>My Role</span>
+      <div class="job" data-reveal>
+        <div class="job-head"><div class="co">Product Designer</div></div>
+        <p class="desc">Worked across research, synthesis, ideation, UX, UI, prototyping, and validation, with primary ownership of <b>statistical analysis</b>, insight synthesis, and usability testing.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wh divide">
+    <div class="wrap">
+      <span class="label" data-reveal>Process</span>
+
+      <div class="job" data-reveal>
+        <div class="job-head"><div class="co">Research &amp; Discovery</div></div>
+        <div class="stage-tags"><span class="b-tag">• Stage 1</span><span class="b-tag">• 4 Weeks</span></div>
+        <p class="desc">Combining qualitative and quantitative research methods to uncover user needs, validate assumptions, and identify opportunities for product improvement.</p>
+        <p class="tools-line"><b>Tools:</b> User Interviews, Insight Generation, Thematic Analysis, Statistical Analysis</p>
+      </div>
+
+      <div class="job" data-reveal>
+        <div class="job-head"><div class="co">Ideation &amp; Strategy</div></div>
+        <div class="stage-tags"><span class="b-tag">• Stage 2</span><span class="b-tag">• 2 Weeks</span></div>
+        <p class="desc">Transforming research insights into product opportunities, prioritizing ideas, and defining strategic features with the highest user and business value.</p>
+        <p class="tools-line"><b>Tools:</b> User Flow, Opportunity Mapping, Feature Strategy, Idea Prioritization</p>
+      </div>
+
+      <div class="job" data-reveal>
+        <div class="job-head"><div class="co">Design Execution</div></div>
+        <div class="stage-tags"><span class="b-tag">• Stage 3</span><span class="b-tag">• 4 Weeks</span></div>
+        <p class="desc">Converting validated concepts into structured experiences through wireframing, prototyping, and interface design.</p>
+        <p class="tools-line"><b>Tools:</b> UI Design, Design System, Wireframing, Prototyping</p>
+      </div>
+
+      <div class="job" data-reveal>
+        <div class="job-head"><div class="co">Validation &amp; Refinement</div></div>
+        <div class="stage-tags"><span class="b-tag">• Stage 4</span><span class="b-tag">• 2 Weeks</span></div>
+        <p class="desc">Evaluating design effectiveness through usability testing and validating key product decisions using real user feedback.</p>
+        <p class="tools-line"><b>Tools:</b> Iteration, Task-Based Testing, Usability Testing, Maze Testing</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wh divide">
+    <div class="wrap">
+      <span class="label" data-reveal>Problem Framing</span>
+      <div class="job" data-reveal>
+        <div class="job-head"><div class="co">Stakeholder Interviews</div></div>
+        <p class="desc">Stakeholder interviews revealed an opportunity to expand the platform beyond individual therapy sessions. The challenge was to understand how group-based services could create <b>business value</b>, improve <b>retention</b>, and fit naturally within the existing product ecosystem.</p>
+          <blockquote data-reveal>"Group-based services are already a valuable part of mental health care. The challenge is understanding how they fit into our product ecosystem."<span class="bq-label" style="font-size:12.5px;color:var(--faint);display:block;margin-top:6px">— Ravan-Darman Stakeholder</span></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="wh divide">
+    <div class="wrap">
+      <span class="label with-tag" data-reveal>Research &amp; Discovery <span class="b-tag">• Stage 1</span></span>
+      <p class="desc-j" data-reveal>To build a reliable understanding of user needs, we combined qualitative interviews with quantitative survey analysis. Through thematic analysis and statistical validation, we identified recurring behavioral patterns, key pain points, and unmet expectations. These insights formed the basis for our strategic decisions and feature prioritization.</p>
+
+      <span class="label" data-reveal style="margin-top:64px;display:block">Key Insights</span>
+
+      <div class="job" data-reveal>
+        <div class="job-head"><div class="co">Need for a Multimedia Content Strategy</div></div>
+        <p class="desc-j">Users prefer learning through visual and auditory content over reading long texts.</p>
+        <div class="bq-wrap" data-reveal>
+          <span class="bq-k">Evidence</span>
+          <blockquote>Most popular formats: Podcast (52.8%) and Video (30.3%).</blockquote>
+        </div>
+        <div class="bq-wrap" data-reveal>
+          <span class="bq-k">Action Plan</span>
+          <blockquote>Restructuring the blog's Information Architecture (IA) to a media-centric approach and strategically utilizing short audio and video formats.</blockquote>
+        </div>
+      </div>
+
+      <div class="job" data-reveal>
+        <div class="job-head"><div class="co">Friction in Loyal Users&rsquo; Experience</div></div>
+        <p class="desc-j">Users with the highest platform engagement — who are the primary customers — suffer the most from technical challenges and financial processes.</p>
+        <div class="bq-wrap" data-reveal>
+          <span class="bq-k">Evidence</span>
+          <blockquote>High correlation between user engagement and payment challenges. Satisfaction drop has a systemic root, independent of demographics.</blockquote>
+        </div>
+        <div class="bq-wrap" data-reveal>
+          <span class="bq-k">Action Plan</span>
+          <blockquote>Completely redesigning and simplifying the payment flows and providing alternative financial solutions to facilitate the payment process.</blockquote>
+        </div>
+      </div>
+
+      <div class="job" data-reveal>
+        <div class="job-head"><div class="co">Trust &amp; Decision-Making Barriers</div></div>
+        <p class="desc-j">Clients face ambiguity when selecting a therapist and lack sufficient trust in the platform's information, relying heavily on external recommendations.</p>
+        <div class="bq-wrap" data-reveal>
+          <span class="bq-k">Evidence</span>
+          <blockquote>Selection source for 73.9% of users: &lsquo;Friends&rsquo; recommendations.&rsquo; High level of ambiguity in understanding therapists&rsquo; specialties (38.6%) and resumes (30.7%).</blockquote>
+        </div>
+        <div class="bq-wrap" data-reveal>
+          <span class="bq-k">Action Plan</span>
+          <blockquote>Simplifying profile copywriting, highlighting key decision-making factors, and designing a verified review system to build trust.</blockquote>
+        </div>
+      </div>
+
+      <div class="job" data-reveal>
+        <div class="job-head"><div class="co">Fear of the Unknown in Group Services</div></div>
+        <p class="desc-j">Research revealed that uncertainty around privacy and how group services work mattered more than lower costs.</p>
+        <div class="bq-wrap" data-reveal>
+          <span class="bq-k">Evidence</span>
+          <blockquote>67.8% lack any conception of the session process. Direct correlation between fear for privacy and unfamiliarity with session structure.</blockquote>
+        </div>
+        <div class="bq-wrap" data-reveal>
+          <span class="bq-k">Action Plan</span>
+          <blockquote>Changing the copywriting tone to safer terms, clarifying the session process before registration, and visually emphasizing confidentiality guarantees.</blockquote>
+        </div>
+      </div>
+
+      <span class="label" data-reveal style="margin-top:64px;display:block">Persona</span>
+
+      <div class="job" data-reveal>
+        <div class="job-head"><div class="co">Saara — 29 Years Old</div></div>
+          <blockquote data-reveal>"I want to know who is leading the session, what to expect, and whether it feels relevant to my needs before I join a group."<span class="bq-label" style="font-size:12.5px;color:var(--faint);display:block;margin-top:6px">— Saara</span></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="wh divide">
+    <div class="wrap">
+      <span class="label with-tag" data-reveal>Ideation &amp; Strategy <span class="b-tag">• Stage 2</span></span>
+      <p class="desc-j section-intro" data-reveal>Research findings were translated into actionable opportunities through a structured ideation process. By evaluating ideas based on user value, business impact, and implementation effort, we prioritized solutions that addressed both user needs and stakeholder goals. This process ultimately led to the development of two core concepts: Events and Community.</p>
+
+      <div class="job" data-reveal>
+        <div class="job-head"><div class="co">Event</div></div>
+        <p class="desc-j">Research findings showed that users often lacked enough information and confidence before participating in group-based services. A dedicated Events experience organizes workshops, therapy groups, and educational sessions in one place — letting users explore activities, pre-register for an initial assessment, and access facilitator introductions and supporting media.</p>
+        <div class="bq-wrap" data-reveal>
+          <span class="bq-k">Goal</span>
+          <blockquote>Help users discover and confidently join group-based services.</blockquote>
+        </div>
+      </div>
+
+      <div class="job" data-reveal>
+        <div class="job-head"><div class="co">Community</div></div>
+        <p class="desc-j">Research findings highlighted the need for ongoing engagement beyond individual therapy sessions. A structured community space organizes discussions around mental-health topics, letting users participate in conversations and engage with others in a moderated environment.</p>
+        <div class="bq-wrap" data-reveal>
+          <span class="bq-k">Goal</span>
+          <blockquote>Increase engagement and long-term retention.</blockquote>
+        </div>
+      </div>
+
+      <span class="label" data-reveal style="margin-top:64px;display:block">Information Architecture</span>
+      <p class="desc-j" data-reveal>Following the model influenced by the new features, we restructured the platform's information architecture — isolating Events from individual-session booking so the new features complemented rather than competed with the platform's core offering.</p>
+      <img class="ia-shot" src="images/image-008.png" alt="Information Architecture">
+    </div>
+  </section>
+
+  <section class="wh divide">
+    <div class="wrap">
+      <span class="label with-tag" data-reveal>Design Execution <span class="b-tag">• Stage 3</span></span>
+      <p class="desc-j" data-reveal>After defining the product direction, concepts were translated into tangible experiences through sketches, wireframes, interaction design, and high-fidelity interfaces. The focus was on creating a clear, accessible, and cohesive experience while maintaining consistency across the platform. Interactive prototypes were then developed to evaluate usability before validation.</p>
+
+      <span class="label" data-reveal style="margin-top:64px;display:block">UI Design</span>
+      <p class="desc-j" data-reveal>Our visual strategy focused on creating a calm, clear, and accessible experience for users. A UI Style Guide was developed alongside screen explorations to ensure consistency across the platform. We utilized a <b>soft, pastel-based color palette</b> to reinforce a sense of safety and approachability, while typography was selected for high legibility and reduced cognitive load in a sensitive context.</p>
+
+      <div class="proto-break"><img class="proto-shot" src="images/image-009.png" alt="Community flow prototype"></div>
+      <div class="proto-break"><img class="proto-shot" src="images/image-010.png" alt="Event flow prototype"></div>
+
+      <a class="cta-card mini-cta proto-cta" href="https://www.figma.com/proto/8KQkxMCTV0owOILNoDdPxu/%D8%B1%D9%88%D8%A7%D9%86-%D8%AF%D8%B1%D9%85%D8%A7%D9%86?node-id=51-1116&starting-point-node-id=51%3A1116" target="_blank" rel="noopener" data-reveal>
+        <div>
+          <div class="mini-cta-title">Figma Prototype</div>
+          <p class="mini-cta-desc">Click through the final product — explore the actual Event and Community flows.</p>
+        </div>
+        <svg class="ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16L16 8"/><path d="M9.5 8H16V14.5"/></svg>
+      </a>
+
+      <div class="ds-box" data-reveal>
+        <div class="cta-card">
+          <div class="cta-head">
+            <div class="ds-grid2x2">
+              <div>
+                <div class="ds-item-k">Typography</div>
+                <div class="ds-item-v">Headline 20/16/14px · Body 14/12/10px</div>
+              </div>
+              <div>
+                <div class="ds-item-k">Spacing</div>
+                <div class="ds-item-v">4 · 8 · 12 · 16 · 24 · 32 · 48 · 64px</div>
+              </div>
+              <div>
+                <div class="ds-item-k">Layout</div>
+                <div class="ds-item-v">375px · 4 columns · 16px gutter · 24px margin</div>
+              </div>
+              <div>
+                <div class="ds-item-k">Colors</div>
+                <div class="ds-swatch-row">
+                  <span class="ds-swatch" style="background:#37ACB1"></span>
+                  <span class="ds-swatch" style="background:#6853F2"></span>
+                  <span class="ds-swatch" style="background:#18181B"></span>
+                  <span class="ds-swatch" style="background:#FEFDFF"></span>
+                  <span class="ds-swatch-more">+55</span>
+                </div>
+                <div class="ds-color-doc">Teal #37ACB1 · Purple #6853F2 · Neutral #18181B · Neutral #FEFDFF · part of a larger system</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="note-box" data-reveal>
+        <div class="cta-card">
+          <div class="cta-head">
+            <div class="note-k">Note:</div>
+            <p>Beside categorizing events, we included search filters such as <b>city</b> and <b>price</b> for users to find what they're looking for faster.</p>
+            <p>We used distinct color-coding across event types and community topics, helping users quickly recognize and navigate different categories as they browse.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wh divide">
+    <div class="wrap">
+      <span class="label with-tag" data-reveal>Validation &amp; Refinement <span class="b-tag">• Stage 4</span></span>
+      <p class="desc-j section-intro" data-reveal>To assess the effectiveness of the proposed solutions, we conducted scenario-based usability testing using interactive prototypes. The results provided valuable insights into navigation, task completion, and overall user understanding. Findings indicated that the new features aligned with user expectations and effectively supported the intended experience.</p>
+
+      <div class="job" data-reveal>
+        <div class="job-head"><div class="co">Event — Booking a Prescreening Interview</div></div>
+        <p class="desc-j">Participants completed the booking flow with minimal navigational issues. Many recorded interactions reflected engagement with supporting content — such as the specialist introduction and session details — rather than friction in the booking process.</p>
+        <div class="val-stats">
+          <div class="val-stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M8 21h8M12 17v4M7 4h10v4a5 5 0 0 1-10 0V4Z"/><path d="M7 6H4a3 3 0 0 0 3 5M17 6h3a3 3 0 0 1-3 5"/></svg><div><div class="vs-num">95.8%</div><div class="vs-lbl">Completion</div></div></div>
+          <div class="val-stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 17l6-6 4 4 8-8M21 7v6h-6"/></svg><div><div class="vs-num">4.2%</div><div class="vs-lbl">Drop-off</div></div></div>
+          <div class="val-stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg><div><div class="vs-num">85.12s</div><div class="vs-lbl">Median Duration</div></div></div>
+        </div>
+      </div>
+
+      <div class="job" data-reveal>
+        <div class="job-head"><div class="co">Community — Interacting Within a Specific Thread</div></div>
+        <p class="desc-j">Participants completed the task quickly and consistently. While some reached the target through alternative navigation paths, these variations did not appear to create noticeable friction — the community hierarchy and labeling were clear enough to locate discussions and interact efficiently.</p>
+        <div class="val-stats">
+          <div class="val-stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M8 21h8M12 17v4M7 4h10v4a5 5 0 0 1-10 0V4Z"/><path d="M7 6H4a3 3 0 0 0 3 5M17 6h3a3 3 0 0 1-3 5"/></svg><div><div class="vs-num">100%</div><div class="vs-lbl">Completion</div></div></div>
+          <div class="val-stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 17l6-6 4 4 8-8M21 7v6h-6"/></svg><div><div class="vs-num">0.0%</div><div class="vs-lbl">Drop-off</div></div></div>
+          <div class="val-stat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg><div><div class="vs-num">27.32s</div><div class="vs-lbl">Median Duration</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wh divide">
+    <div class="wrap">
+      <span class="label" data-reveal>Final Comments</span>
+      <div class="job" data-reveal>
+        <div class="job-head"><div class="co">Research Before Assumptions</div></div>
+        <p class="desc-j">User interviews, thematic analysis, and statistical validation revealed patterns that were not immediately visible — transforming raw observations into actionable insights that informed every major product decision.</p>
+      </div>
+      <div class="job" data-reveal>
+        <div class="job-head"><div class="co">Designing With Evidence</div></div>
+        <p class="desc-j">From ideation to usability testing, each stage was grounded in research and user feedback. Validating concepts before implementation increased confidence in the final solution and reduced the risk of designing on assumptions alone.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cs-sec">
+    <div class="wrap">
+      <div class="cta-card" data-reveal>
+        <div class="cta-head">
+          <div class="cta-title">Explore the full case study</div>
+          <p class="cta-sub">Research, ideation &amp; strategy, information architecture, UI design, and validation.</p>
+        </div>
+        <div class="cta-links">
+          <a class="cta-link" href="https://www.figma.com/proto/8KQkxMCTV0owOILNoDdPxu/%D8%B1%D9%88%D8%A7%D9%86-%D8%AF%D8%B1%D9%85%D8%A7%D9%86?node-id=51-1116&starting-point-node-id=51%3A1116" target="_blank" rel="noopener">
+            <span><span class="cl-t">Figma Prototype</span><span class="cl-d">Click through the case study, screen by screen</span></span>
+            <svg class="ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16L16 8"/><path d="M9.5 8H16V14.5"/></svg>
+          </a>
+          <a class="cta-link" href="https://www.behance.net/gallery/252454335/Mental-Health-Platform-Product-Design" target="_blank" rel="noopener">
+            <span><span class="cl-t">Behance</span><span class="cl-d">Read the full write-up on Behance</span></span>
+            <svg class="ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16L16 8"/><path d="M9.5 8H16V14.5"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ PAGE: ABOUT ============ -->
+<div class="page" id="page-about">
+  <header class="pagehead">
+    <div class="wrap">
+      <span class="label" data-reveal>About</span>
+      <h1 data-reveal>Hossein Emami</h1>
+    </div>
+  </header>
+  <section class="divide"><div class="wrap">
+    <div class="abt-grid">
+      <div class="abt-bio">
+        <p data-reveal>I'm a <b>product designer</b> with a background in computer software engineering. I work across the whole design process — from research and synthesis through to validated, shipped decisions.</p>
+        <p data-reveal>My engineering background gives me a systematic read on product systems and technical constraints. I'm strongest where <b>behavioral analysis meets product direction</b> — connecting user needs and business goals to decisions that hold up in production.</p>
+        <p data-reveal>Recently I've worked across EdTech and mental-health products. I'm open to new product design roles — working with local teams and open to remote.</p>
+      </div>
+    </div>
+  </div></section>
+  <section class="block divide"><div class="wrap">
+    <span class="label" data-reveal>Education &amp; Certification</span>
+    <ul>
+      <li data-reveal><b>Product Design Bootcamp</b> — Rahnema College · 2026 — 80h in-person classes + 180h of study and project work.</li>
+      <li data-reveal><b>B.Sc. Computer Software Engineering</b> — Behbahan Khatam Alanbia University of Technology · 2017 – 2023.</li>
+    </ul>
+  </div></section>
+</div>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="divide">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="big">Let's build something.<span>Open to full-time &amp; freelance work.</span></div>
+      <button class="pill copy" data-copy="Hosseinem77@gmail.com"><span class="lbl">Hosseinem77@gmail.com</span></button>
+    </div>
+    <div class="foot-row">
+      <a class="pill" href="https://linkedin.com/in/hosseinem" target="_blank" rel="noopener">LinkedIn <svg class="ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16L16 8"/><path d="M9.5 8H16V14.5"/></svg></a>
+      
+      <button class="pill copy" data-copy="+98 936 463 7537"><span class="lbl">Copy Number</span></button>
+    </div>
+    <div class="foot-copy"><span class="c">© 2026 Hossein Emami</span></div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('[data-copy]').forEach(function(btn){
+    var val=btn.getAttribute('data-copy'),lbl=btn.querySelector('.lbl'),o=lbl?lbl.textContent:'';
+    btn.addEventListener('click',async function(e){e.preventDefault();e.stopPropagation();
+      try{await navigator.clipboard.writeText(val);}catch(err){var t=document.createElement('textarea');t.value=val;document.body.appendChild(t);t.select();try{document.execCommand('copy');}catch(_){}document.body.removeChild(t);}
+      btn.classList.add('copied');if(lbl){lbl.textContent='Copied!';setTimeout(function(){btn.classList.remove('copied');lbl.textContent=o;},1500);}});
+  });
+  (function(){var root=document.documentElement,btn=document.getElementById('themeToggle');
+    var moon='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.2A7.3 7.3 0 1 1 9.8 4 5.8 5.8 0 0 0 20 14.2Z"/></svg>';
+    var sun='<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 3V4.6M12 19.4V21M3 12H4.6M19.4 12H21M5.6 5.6l1.1 1.1M17.3 17.3l1.1 1.1M18.4 5.6l-1.1 1.1M6.7 17.3l-1.1 1.1"/></svg>';
+    function icon(){if(btn)btn.innerHTML=root.classList.contains('dark')?sun:moon;}icon();
+    if(btn)btn.addEventListener('click',function(e){e.stopPropagation();root.classList.toggle('dark');try{localStorage.setItem('theme',root.classList.contains('dark')?'dark':'light');}catch(e){}icon();});})();
+  function runReveals(scope){
+    var els=(scope||document).querySelectorAll('[data-reveal]:not(.in)');
+    if('IntersectionObserver' in window){
+      var io=new IntersectionObserver(function(en){en.forEach(function(e,i){if(e.isIntersecting){e.target.style.transitionDelay=(Math.min(i,4)*55)+'ms';e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+      els.forEach(function(el){io.observe(el);});
+    }else{els.forEach(function(el){el.classList.add('in');});}
+  }
+  function showPage(id){
+    var el=document.getElementById('page-'+id);
+    if(!el){id='work';el=document.getElementById('page-work');}
+    document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active');});
+    el.classList.add('active');
+    var root=document.documentElement,prev=root.style.scrollBehavior;
+    root.style.scrollBehavior='auto';window.scrollTo(0,0);root.style.scrollBehavior=prev;
+    runReveals(el);
+  }
+  function route(){showPage((location.hash||'#work').replace('#',''));}
+  window.addEventListener('hashchange',route);
+  route();
+</script>
+</body>
+</html>
